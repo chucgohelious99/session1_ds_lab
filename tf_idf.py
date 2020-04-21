@@ -110,22 +110,28 @@ if __name__ == '__main__':
     cwd= getcwd()
     print(cwd)
     train_dir, test_dir, list_newsgroups = gather_20newsgroups_data('./20news_bydate/')
-
+    print(1)
     train_data = collect_data_from(parent_dir= train_dir, newsgroup_list= list_newsgroups) 
+    print(2)
     test_data  = collect_data_from(parent_dir= test_dir, newsgroup_list= list_newsgroups)
+    print(3)
     full_data   = train_data + test_data
-
-    with open('./20news_bydate/20news_train_processed.txt') as f:
+    print(4)
+    with open('./20news_bydate/20news_train_processed.txt','w') as f:
         f.write('\n'.join(train_data))
-
-    with open('./20news_test_processed.txt') as f:
+        f.close()
+    print(5)
+    with open('./20news_bydate/20news_test_processed.txt','w') as f:
         f.write('\n'.join(test_data))
-
-    with open('./20news_bydate/20news_full_processed.txt') as f:
+        f.close()
+    print(6)
+    with open('./20news_bydate/20news_full_processed.txt','w') as f:
         f.write('\n'.join(full_data))
-    
+        f.close()
+    print(7)
     generate_vocabulary('./20news_bydate/20news_full_processed.txt')
-
-    get_tf_idf('./20news_bydate/20news_bydate/20news_train_processed.txt', './20news_bydate/train_tf_idf.txt')
-
+    print(8)
+    get_tf_idf('./20news_bydate/20news_train_processed.txt', './20news_bydate/train_tf_idf.txt')
+    print(9)
     get_tf_idf('./20news_bydate/20news_test_processed.txt', './20news_bydate/test_tf_idf.txt')
+    print(10)
